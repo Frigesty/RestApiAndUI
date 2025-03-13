@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -11,8 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static ru.frigesty.data.Paths.PROFILE_PATH;
 
 public class ProfilePage {
-    final private SelenideElement mainHeader = $(".main-header"),
-            deleteButton = $("#delete-record-undefined"),
+    final private SelenideElement deleteButton = $("#delete-record-undefined"),
             okButton = $("#closeSmallModal-ok"),
             consentBanner = $(".fc-consent-root");
 
@@ -57,6 +57,12 @@ public class ProfilePage {
     @Step("Проверка, что в коллекции нет книги {title}")
     public ProfilePage checkTableBody(String title) {
         $("[id='see-book-"+title+"']").shouldNot(visible);
+        return this;
+    }
+
+    @Step("Проверка, что мы авторизовались")
+    public ProfilePage checkAuthorization() {
+        $("#userName-value").shouldHave(text("BookStore"));
         return this;
     }
 }

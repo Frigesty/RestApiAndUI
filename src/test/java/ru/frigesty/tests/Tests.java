@@ -7,40 +7,35 @@ import ru.frigesty.api.LoginApi;
 import ru.frigesty.helpers.WithLogin;
 import ru.frigesty.models.response.BookCollectionResponseModel;
 import ru.frigesty.models.response.LoginResponseModel;
+import ru.frigesty.pages.LoginPage;
 import ru.frigesty.pages.ProfilePage;
-import static ru.frigesty.data.Credentials.PASSWORD;
-import static ru.frigesty.data.Credentials.USERNAME;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
 
 @Tag("simple")
 public class Tests extends TestBase{
+    ProfilePage profilePage = new ProfilePage();
+    BooksApi booksApi = new BooksApi();
+    LoginPage loginPage = new LoginPage();
 
     @Tag("simple")
     @Test
     public void authorisationOnBookStoreWithUITest() {
-        open("/login");
-        clearBrowserLocalStorage();
-        clearBrowserCookies();
-        refresh();
-        $("#userName").setValue(USERNAME);
-        $("#password").setValue(PASSWORD);
-        $("#login").click();
-        $("#userName-value").shouldHave(text("BookStore"));
+        loginPage.openPage();
+        loginPage.refreshCookie();
+        loginPage.setUserNameAndPassword();
+        loginPage.pressOnLoginButton();
+        profilePage.checkAuthorization();
     }
 
     @Tag("simple")
     @Test
     @WithLogin
     public void authorisationOnBookStoreWithAPITest() {
-        open("/profile");
-        $("#userName-value").shouldHave(text("BookStore"));
+        profilePage.openPage();
+        profilePage.checkAuthorization();
     }
 
     private final int BOOK_NO = 0;
-    ProfilePage profilePage = new ProfilePage();
-    BooksApi booksApi = new BooksApi();
+
     @Test
     @WithLogin
     void successDeleteBookFromProfileTest() {

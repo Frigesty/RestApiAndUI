@@ -14,8 +14,8 @@ import static ru.frigesty.data.Credentials.USERNAME;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-@Tag("api")
-public class ApiTests extends TestBase{
+@Tag("simple")
+public class Tests extends TestBase{
 
     @Tag("simple")
     @Test

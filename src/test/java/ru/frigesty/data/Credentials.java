@@ -1,6 +1,6 @@
 package ru.frigesty.data;
 
 public class Credentials {
-    public static final String USERNAME = "BookStore";
-    public static final String PASSWORD = "BookStore1%";
+    public static final String USERNAME = System.getProperty("userName");
+    public static final String PASSWORD = System.getProperty("password");
 }

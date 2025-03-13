@@ -25,12 +25,15 @@ public interface WebDriverConfig extends Config {
     @DefaultValue("https://demoqa.com")
     String baseUrl();
 
+    @Key("baseUri")
+    @DefaultValue("https://demoqa.com")
+    String baseUri();
+
     @Key("isRemote")
     @DefaultValue("false")
     boolean isRemote();
 
     @Key("remoteUrl")
-    @DefaultValue("https://user1:1234@selenoid.autotests.cloud/wd/hub")
     String remoteUrl();
 
     @Key("loadStrategy")

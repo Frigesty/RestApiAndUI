@@ -35,7 +35,7 @@ public class TestBase {
         Configuration.browserSize = webDriverConfig.browserSize();
         Configuration.pageLoadStrategy = webDriverConfig.loadStrategy();
         Configuration.baseUrl = webDriverConfig.baseUrl();
-        RestAssured.baseURI = "https://demoqa.com";
+        RestAssured.baseURI = webDriverConfig.baseUrl();
     }
 
     private static void configureRemote() {

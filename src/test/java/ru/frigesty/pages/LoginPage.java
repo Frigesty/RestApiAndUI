@@ -2,8 +2,7 @@ package ru.frigesty.pages;
 
 import io.qameta.allure.Step;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 import static ru.frigesty.data.Credentials.PASSWORD;
 import static ru.frigesty.data.Credentials.USERNAME;
 
@@ -31,7 +30,9 @@ public class LoginPage {
 
     @Step("Обновляем куки")
     public LoginPage refreshCookie() {
-        open("/login");
+        clearBrowserLocalStorage();
+        clearBrowserCookies();
+        refresh();
 
         return this;
     }

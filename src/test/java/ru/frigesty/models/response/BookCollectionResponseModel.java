@@ -6,5 +6,5 @@ import lombok.Data;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 public class BookCollectionResponseModel {
-    private BookResponseModel [] books;
+    private BookResponseModel[] books;
 }

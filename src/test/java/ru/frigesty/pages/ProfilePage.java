@@ -27,8 +27,7 @@ public class ProfilePage {
     public ProfilePage googleConsent() {
         if (consentBanner.isDisplayed()) {
             consentBanner.$(byText("Consent")).click();
-        }
-        else{
+        } else {
             System.out.println("No consent banner");
         }
         return this;
@@ -36,7 +35,7 @@ public class ProfilePage {
 
     @Step("Проверка, что в коллекции есть книга {title}")
     public ProfilePage checkForBook(String title) {
-        $("[id='see-book-"+title+"']").shouldBe(visible);
+        $("[id='see-book-" + title + "']").shouldBe(visible);
         return this;
     }
 
@@ -56,7 +55,7 @@ public class ProfilePage {
 
     @Step("Проверка, что в коллекции нет книги {title}")
     public ProfilePage checkTableBody(String title) {
-        $("[id='see-book-"+title+"']").shouldNot(visible);
+        $("[id='see-book-" + title + "']").shouldNot(visible);
         return this;
     }
 

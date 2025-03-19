@@ -2,8 +2,8 @@ package ru.frigesty.tests;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import ru.frigesty.api.BooksApi;
-import ru.frigesty.api.LoginApi;
+import ru.frigesty.api.BooksApiSteps;
+import ru.frigesty.api.LoginApiSteps;
 import ru.frigesty.helpers.WithLogin;
 import ru.frigesty.models.response.BookCollectionResponseModel;
 import ru.frigesty.models.response.LoginResponseModel;
@@ -11,9 +11,9 @@ import ru.frigesty.pages.LoginPage;
 import ru.frigesty.pages.ProfilePage;
 
 @Tag("simple")
-public class Tests extends TestBase{
+public class Tests extends TestBase {
     ProfilePage profilePage = new ProfilePage();
-    BooksApi booksApi = new BooksApi();
+    BooksApiSteps booksApi = new BooksApiSteps();
     LoginPage loginPage = new LoginPage();
 
     @Tag("simple")
@@ -42,7 +42,7 @@ public class Tests extends TestBase{
 
         BookCollectionResponseModel collection = booksApi.requestBookCollection();
 
-        LoginResponseModel authResponse = new LoginApi().login();
+        LoginResponseModel authResponse = new LoginApiSteps().login();
 
         booksApi.deleteAllBooks(authResponse);
 
@@ -51,7 +51,7 @@ public class Tests extends TestBase{
         booksApi.addBook(isbn, authResponse.getToken(), authResponse.getUserId());
 
         profilePage.googleConsent()
-                   .openPage();
+                .openPage();
         profilePage.checkForBook(title);
         profilePage.deleteBook();
         profilePage.confirmDelete();

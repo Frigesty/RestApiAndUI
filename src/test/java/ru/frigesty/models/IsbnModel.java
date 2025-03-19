@@ -9,5 +9,6 @@ public class IsbnModel {
     public IsbnModel(String isbn) {
         this.isbn = isbn;
     }
+
     private String isbn;
 }

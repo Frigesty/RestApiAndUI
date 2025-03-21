@@ -29,7 +29,7 @@ public class LoginPage {
     }
 
     @Step("Обновляем куки")
-    public LoginPage refreshCookie() {
+    public LoginPage refreshPage() {
         refresh();
 
         return this;

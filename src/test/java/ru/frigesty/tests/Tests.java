@@ -20,7 +20,7 @@ public class Tests extends TestBase {
     @Test
     public void authorisationOnBookStoreWithUITest() {
         loginPage.openPage();
-        loginPage.refreshCookie();
+        loginPage.refreshPage();
         loginPage.setUserNameAndPassword();
         loginPage.pressOnLoginButton();
         profilePage.checkAuthorization();

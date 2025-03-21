@@ -15,10 +15,8 @@ import static ru.frigesty.specs.ApiSpecs.responseSpecBase;
 public class LoginApiSteps {
 
     @Step("Авторизация через API")
-    public LoginResponseModel login(){
-        LoginBodyModel credentialsModel = new LoginBodyModel();
-        credentialsModel.setUserName(USERNAME);
-        credentialsModel.setPassword(PASSWORD);
+    public LoginResponseModel login() {
+        LoginBodyModel credentialsModel = new LoginBodyModel(USERNAME, PASSWORD);
 
         return
                 given(requestSpecBase)

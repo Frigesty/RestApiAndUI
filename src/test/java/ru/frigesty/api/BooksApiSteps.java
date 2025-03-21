@@ -16,13 +16,13 @@ public class BooksApiSteps {
 
     @Step("Удаление всех книг из профиля через API")
     public void deleteAllBooks(LoginResponseModel loginResponse) {
-        given(requestSpecBase)
-                .header("Authorization", "Bearer " + loginResponse.getToken())
-                .queryParam("UserId", loginResponse.getUserId())
-        .when()
-                .delete(COLLECTION_PATH)
-        .then()
-                .spec(deleteResponseSpec);
+               given(requestSpecBase)
+                       .header("Authorization", "Bearer " + loginResponse.getToken())
+                       .queryParam("UserId", loginResponse.getUserId())
+               .when()
+                       .delete(COLLECTION_PATH)
+               .then()
+                       .spec(deleteResponseSpec);
     }
 
     @Step("Получение коллекции книг через API")

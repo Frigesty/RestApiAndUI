@@ -30,8 +30,6 @@ public class LoginPage {
 
     @Step("Обновляем куки")
     public LoginPage refreshCookie() {
-        clearBrowserLocalStorage();
-        clearBrowserCookies();
         refresh();
 
         return this;
